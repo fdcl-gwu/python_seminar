@@ -1,0 +1,99 @@
+% AAS PRESENTATION PACKAGES
+\ProvidesPackage{presentation_packages}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DEFINE USEFUL PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OBSOLETE PACKAGE CHECK
+\RequirePackage[l2tabu,orthodox]{nag}
+
+% -------------------MATH PACKAGES --------------------------------------
+\usepackage[binary-units=true]{siunitx} % SI units
+
+\usepackage{amssymb}  
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{microtype} % better fonts/apperance
+\usepackage{bm} % boldface
+%----------------------------- GRAPHICS PACKAGES--------------------------
+\usepackage{geometry} % allows for adjustment of margins/layout of the page
+\usepackage{graphicx} % for pdf, bitmapped graphics files
+\usepackage{color}
+\usepackage{subcaption} % make it possible to include more than one captioned figure/table in a single float
+\graphicspath{{./figures/}}% path to images
+
+% TIKZ
+\usepackage{tikz}
+\usepackage{environ}
+\usetikzlibrary{decorations.markings,decorations.pathreplacing,calc}
+
+\tikzset{help lines/.style={very thin,color=gray!50}} % modify the help lines style
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position .5 with {\arrow{>}}},postaction={decorate}}}
+  
+  \makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+\makeatother
+%------------- CITATION PACKAGES------------------------------
+
+%\usepackage{listings}
+%\usepackage{accents}
+%\usepackage{overcite} % reference numbers appear as superscript exponents. Used by AAS
+\usepackage{footnpag}   
+\usepackage{multimedia}
+\usepackage{animate} % for animated gif
+\usepackage[]{biblatex}
+\usepackage[]{hyperref} % links to stuff
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitV},    % fits the width of the page to the window
+    pdftitle={},    % title
+    pdfauthor={Shankar Kulumani},     % author
+    pdfsubject={},   % subject of the document
+    pdfcreator={Shankar Kulumani},   % creator of the document
+    pdfproducer={Shankar Kulumani}, % producer of the document
+    pdfkeywords={}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+    citecolor=black,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=black           % color of external links
+}
+% --------------------------------------
+% MUST BE AFTER HYPERREF!!!!!!!!!
+%------------------------------------------
+\usepackage[noabbrev,capitalize]{cleveref} % get fancy referencing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% CUSTOM MACROS
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{my_macros}
+
+%%%%%%%%%%%
+% OLD PACKAGES
+%%%%%%%%%
+% \usepackage{setspace} % line spacing
+% \usepackage{booktabs} % for much better looking tables without vertical seperators
+% \usepackage{array} % for better arrays (eg matrices) in maths
+% %\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+% \usepackage{bm} % bold face letters in math environment
+% \usepackage{float}
+% \usepackage{url}
+% \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim

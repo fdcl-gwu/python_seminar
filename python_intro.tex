@@ -1,0 +1,171 @@
+\documentclass[11pt,professionalfonts,aspectratio=169,final]{beamer}
+
+\usepackage{presentation_packages}
+%\bibliography{library} % must be in the preamble when using biblatex package
+
+\definecolor{mygray}{gray}{0.9}
+\definecolor{RoyalBlue}{rgb}{0.25,0.41,0.88}
+\def\Emph{\textcolor{RoyalBlue}}
+
+\definecolor{tmp}{rgb}{0.804,0.941,1.0}
+\setbeamercolor{numerical}{fg=black,bg=tmp}
+\setbeamercolor{exact}{fg=black,bg=red}
+
+\mode<presentation> 
+{
+  \usetheme[hideothersubsections,width=3.5\baselineskip]{Berkeley}
+  % \usefonttheme{serif}
+  \setbeamercovered{transparent}
+  \setbeamerfont{section in sidebar}{size=\scriptsize}
+  \setbeamerfont{subsection in sidebar}{size=\tiny}
+}
+
+\makeatletter
+\beamer@headheight=1.5\baselineskip
+
+\setbeamertemplate{sidebar \beamer@sidebarside}%{sidebar theme}
+  {
+    \beamer@tempdim=\beamer@sidebarwidth%
+    \advance\beamer@tempdim by -6pt%
+    \insertverticalnavigation{\beamer@sidebarwidth}%
+    \vfill
+    \ifx\beamer@sidebarside\beamer@lefttext%
+    \else%
+      \usebeamercolor{normal text}%
+      \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+      \vskip2pt%
+    \fi%
+}%
+
+\setbeamertemplate{footline}%{split theme}
+{%
+  \leavevmode%
+  \begin{beamercolorbox}[wd=1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{title in head/foot}
+%    \usebeamerfont{title in head/foot}\mypaper\hfill \insertframenumber/\inserttotalframenumber
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill \insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}
+} 
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{title page}[default][shadow=true,rounded=true]
+\setbeamercolor{box}{fg=black,bg=yellow}
+\makeatother
+
+\title[Why Python?]{\large\bf  Intro to Scientific Python}
+
+\author[FDCL]{Shankar Kulumani}
+
+%\institute{\footnotesize
+%{\normalsize Shankar Kulumani}\vspace*{0.2cm}\\
+%  Flight Dynamics and Control Lab \\ 
+%  Dept. of Mechanical and Aerospace Engineering\\ 
+%  The George Washington University \\
+%  Washington, DC\\ \vspace{10pt}
+%  June 4, 2014 \\ \vspace{10pt}
+%  }
+\date{2017 March 3}
+
+\institute{
+\large{\textbf{Flight Dynamics \& Control Lab}}\\
+  \begin{figure} %figure%
+        \includegraphics[width=0.75\textwidth]{gw_txh_2cs_pos}
+    \end{figure}
+}
+
+\logo{\includegraphics[scale=0.2]{figures/gw_atx_2cs_rev.pdf}}
+
+\begin{document}
+
+\setcounter{framenumber}{-1}
+\begin{frame} %-----------------------------%
+  \titlepage
+\end{frame}   %-----------------------------%
+
+\begin{frame}{Get Scientific Python!}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item Python is a general language, but we care about the science!
+    \item Easiest way is the \href{https://www.continuum.io/downloads}{Anaconda} distribution
+    \item Includes everything we need to for Python and science in a easy to manage package
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\columnwidth,height=0.8\textheight,keepaspectratio]{figures/anaconda3.png}
+        \caption{Just get Python 3}
+    \end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{History of Python}
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item \href{https://en.wikipedia.org/wiki/Guido_van_Rossum}{Guido van Rossum} started creating Python in 1989
+        \end{itemize}
+        \begin{block}{}
+        Over six years ago, in December 1989, I was looking for a "hobby" programming project that would keep me occupied during the week around Christmas. \ldots I chose Python as a working title for the project, being in a slightly irreverent mood (and a big fan of Monty Python's Flying Circus).
+        \end{block}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[keepaspectratio,height=0.8\textheight,width=\columnwidth]{Guido_van_Rossum_OSCON_2006}
+            \caption{``Benevolent Dictator For Life''}
+        \end{figure}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{What is Python?}
+
+Python is a modern, general-purpose, object-oriented, high-level language.
+
+\begin{itemize}
+    \item \emph{clean and simple language}: Easy to read and easy to learn syntax
+    \item \emph{expressive language}: Fewer lines of code = fewer mistakes
+    \item \emph{dynamically typed}: no need to define variable types or function arguments
+    \item \emph{automatic memory management}: no need to allocate/deallocate memory
+    \item \emph{interpreted}: No need to compile! Fast and easy
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Why Python?}
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+    \begin{itemize}
+        \item Free - free as in beer \Emph{AND} free as in speech
+        \item General purpose - libraries for everything!
+        \item Dynamic - no compiling
+        \item Easy to read - forces good structure!
+        \item Open - everything is an object
+    \end{itemize}
+    \begin{block}{}
+        It's harder to read code than to write it!
+    \end{block}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\columnwidth,height=0.8\textheight,keepaspectratio]{figures/python.png}
+        \end{figure}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Python vs. Matlab}
+
+\end{frame}
+
+\begin{frame}{Python Philosophy}
+Pythonic
+
+Easier to read
+
+B
+\end{frame}
+\end{document}
+
